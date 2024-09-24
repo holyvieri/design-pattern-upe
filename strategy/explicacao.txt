@@ -1,0 +1,50 @@
+Seguinte, Ana: quando vai se maquiar e do nada, depois de pegar o batom para passar na boca,
+vc decide passar primeiro como blush nas bochechas... então! Essa mudança do algoritmo
+pode ser coisada pelo strategy. É 1 objeto só que pode ter vários comportamentos, só depende
+que você, cliente, saiba qual comportamento vai querer usar.
+
+então, olha:
+
+1. Interface UsoBatom [ABSTRAÇÃO]: Define a operação aplicar(), que todas as variantes de uso do batom devem implementar.
+2. Classes BatomNosLábios, BatomBlush, BatomSombra [BAIXO NIVEL]: Implementam diferentes maneiras de aplicar o batom.
+3. Classe ContextBatom [ALTO NIVEL]: Contém um campo do tipo UsoBatom (um setter) e
+um método aplicarBatom() que chama o método da estratégia atual.
+4. Cliente: Define qual estratégia será usada no momento da execução, trocando entre diferentes formas de usar o batom.
+Só usa o contexto.
+
+# Explicando a INVERSÃO DE DEPENDENCIA
+
+A inversão de dependência (Dependency Inversion Principle - DIP) é um dos princípios SOLID de design de software.
+
+## Módulos de alto nível não devem depender de módulos de baixo nível. Ambos devem depender de abstrações.
+
+Assim, o ContextBatom (módulo de alto nível) não precisa saber como o batom será aplicado (lábios, bochechas ou olhos).
+Ele apenas sabe que vai trabalhar com um objeto que segue a interface UsoBatom.
+
+## Abstrações não devem depender de detalhes. Detalhes devem depender de abstrações.
+
+As classes concretas como BatomNosLábios, BatomBlush e BatomSombra (módulos de baixo nível) implementam a
+interface UsoBatom e contêm os detalhes específicos de como o batom é aplicado.
+
+## SEM O DIP:
+Se o ContextBatom dependesse diretamente das classes concretas (BatomNosLábios, BatomBlush, etc.),
+ele ficaria "acoplado" a essas classes. Toda vez que você quisesse adicionar um novo uso para o batom,
+como usar o batom como contorno, você teria que modificar a lógica do ContextoBatom, violando o princípio de que
+classes de alto nível não devem depender de detalhes de baixo nível.
+
+Desse modo, o ContextBatom não sabe se está aplicando batom nos lábios, nas bochechas ou nos olhos.
+Ele só sabe que está chamando uma ação de aplicação de batom definida na interface.
+Isso facilita a adição de novos tipos de aplicação (por exemplo, batom como contorno) sem modificar o contexto,
+respeitando o DIP.
+
+
+# RESUMO:
+O DIP aplicado no padrão Strategy:
+
+- Desacopla o contexto (ContextBatom) das implementações específicas (BatomNosLábios, BatomBlush, etc.).
+- O ContextBatom depende de uma interface (UsoBatom), que é a abstração.
+As classes concretas de aplicação do batom são módulos de baixo nível que implementam essa interface.
+- Assim, o contexto é independente das variações de como o batom é aplicado, e as mudanças
+nas classes concretas (detalhes) não afetam o contexto.
+
+Essa separação facilita a manutenção e extensão do código.

@@ -1,0 +1,35 @@
+Resultado Final:
+
+Ana, entenda, no fim, é muito mais sobre: não modificar, não alterar o que já existe ali, mas sim ADICIONAR.
+Se eu modifico algum código já existente e funcional, pode dar errado em vários níveis (a partir do momento que
+o projeto cresce)... Mas se eu apenas "adiciono"... meio que eu consigo "isolar", sabe? pq tudo
+fica mais independente.
+
+Então, se eu quisesse adicionar um novo tipo de livro "audiobook", era só criar a classe do tipo em si
+e seu criador, sem depender de tá mexendo em um código que envolvesse outros tipos ou outras criações.
+
+
+- A interface Livro declara os métodos que são comuns a todos os tipos de livros.
+- As classes concretas Ebook e Fisico implementam essa interface.
+- O método fábrica na classe CriadorDeLivros é responsável por abstrair a criação de instâncias de Livro.
+- Subclasses de criadores especializados, como CriadorEbook e CriadorFisico, geram o tipo de livro específico.
+
+## INTERFACE E CLASSE DE SERVIÇO
+
+- comprar() na Interface Livro:
+A interface define o que um livro pode fazer de forma isolada.
+Cada livro pode ter regras diferentes e implementações específicas desse método.
+# Responsabilidade: Este método é parte da interface do próprio livro e deve conter a lógica que é específica ao ato de
+comprar o livro. A ideia é que cada tipo de livro (por exemplo, Ebook e Fisico) implemente seu próprio
+comportamento de compra.
+# Contexto: O método pode lidar com o que acontece quando um cliente tenta comprar aquele livro em particular
+(como verificar a disponibilidade ou aplicar regras específicas relacionadas ao tipo de livro).
+
+- comprarProduto() na Classe de Serviço ServicoDeLivros:
+A classe de serviço encapsula a lógica de compra de forma que o cliente não precisa se preocupar com os detalhes de
+como a compra é processada. Ela pode agregar funcionalidades adicionais, como validar o pagamento ou registrar a compra.
+# Responsabilidade: Este método gerencia o processo de compra como um todo, incluindo interações que não estão
+diretamente ligadas à implementação do livro. Por exemplo, ele pode lidar com integração a sistemas de pagamento,
+atualização de estoque, ou até mesmo a criação de registros de transação.
+# Contexto: A classe de serviço tem uma visão mais ampla do que significa "comprar um livro", considerando todas as
+partes envolvidas no processo de compra.

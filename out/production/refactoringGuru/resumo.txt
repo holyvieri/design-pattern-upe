@@ -1,0 +1,6 @@
+Resultado Final:
+
+- A interface Livro declara os métodos que são comuns a todos os tipos de livros.
+- As classes concretas Ebook e Fisico implementam essa interface.
+- O método fábrica na classe CriadorDeLivros é responsável por abstrair a criação de instâncias de Livro.
+- Subclasses de criadores especializados, como CriadorEbook e CriadorFisico, geram o tipo de livro específico.
