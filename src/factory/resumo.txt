@@ -9,18 +9,18 @@ Então, se eu quisesse adicionar um novo tipo de livro "audiobook", era só cria
 e seu criador, sem depender de tá mexendo em um código que envolvesse outros tipos ou outras criações.
 
 
-- A interface Livro declara os métodos que são comuns a todos os tipos de livros.
-- As classes concretas Ebook e Fisico implementam essa interface.
-- O método fábrica na classe CriadorDeLivros é responsável por abstrair a criação de instâncias de Livro.
-- Subclasses de criadores especializados, como CriadorEbook e CriadorFisico, geram o tipo de livro específico.
+- A interface factory.Livro declara os métodos que são comuns a todos os tipos de livros.
+- As classes concretas factory.Ebook e factory.Fisico implementam essa interface.
+- O método fábrica na classe factory.CriadorDeLivros é responsável por abstrair a criação de instâncias de factory.Livro.
+- Subclasses de criadores especializados, como factory.CriadorEbook e factory.CriadorFisico, geram o tipo de livro específico.
 
 ## INTERFACE E CLASSE DE SERVIÇO
 
-- comprar() na Interface Livro:
+- comprar() na Interface factory.Livro:
 A interface define o que um livro pode fazer de forma isolada.
 Cada livro pode ter regras diferentes e implementações específicas desse método.
 # Responsabilidade: Este método é parte da interface do próprio livro e deve conter a lógica que é específica ao ato de
-comprar o livro. A ideia é que cada tipo de livro (por exemplo, Ebook e Fisico) implemente seu próprio
+comprar o livro. A ideia é que cada tipo de livro (por exemplo, factory.Ebook e factory.Fisico) implemente seu próprio
 comportamento de compra.
 # Contexto: O método pode lidar com o que acontece quando um cliente tenta comprar aquele livro em particular
 (como verificar a disponibilidade ou aplicar regras específicas relacionadas ao tipo de livro).

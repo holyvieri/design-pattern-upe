@@ -1,7 +1,9 @@
+package factory;
+
 public class Main {
     public static void main(String[] args) {
-        /*Livro ebook = new Ebook("A quarta asa");
-        Livro fisico = new Fisico("Of Poseidon");
+        /*factory.Livro ebook = new factory.Ebook("A quarta asa");
+        factory.Livro fisico = new factory.Fisico("Of Poseidon");
 
         ebook.comprar();
         fisico.adicionarListaDesejo();*/
